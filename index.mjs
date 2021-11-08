@@ -1,6 +1,7 @@
 import express from 'express'
 import http from 'http'
 import { WebSocketServer } from 'ws'
+import W1temp  from 'w1temp'
 
 const app = express()
 
@@ -8,19 +9,24 @@ const server = http.createServer(app)
 
 const wss = new WebSocketServer({server})
 
+W1temp.setGpioPower(13)
+W1temp.setGpioData(6)
+
+const sensorIDs = await W1temp.getSensorsUids();
+
+const sensor = await W1temp.getSensor(sensorIDs[0]);
+
 const temperatureActionCreator = temp => ({
   type: 'temp',
   payload: {
-    temp
+    temp: temp
   }
 })
 
-function getRandomArbitrary(min, max) {
-  return Math.random() * (max - min) + min;
-}
-
 function* tempGeneratorMaker() {
-  yield getRandomArbitrary(10, 30)
+  while(true) {
+    yield sensor.getTemperature();
+  }
 }
 
 const tempGenerator = tempGeneratorMaker()

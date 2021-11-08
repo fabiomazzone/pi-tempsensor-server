@@ -1,6 +1,6 @@
 {
   "name": "nodejs-temperature",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "main": "index.js",
   "author": "Fabio Mazzone <fabio.mazzone@me.com>",
   "license": "MIT",
@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "express": "^4.17.1",
+    "w1temp": "^4.4.1",
     "ws": "^8.2.3"
   },
   "devDependencies": {

@@ -439,6 +439,11 @@ got@^9.6.0:
     to-readable-stream "^1.0.0"
     url-parse-lax "^3.0.0"
 
+gpio@^0.2.7:
+  version "0.2.10"
+  resolved "https://registry.yarnpkg.com/gpio/-/gpio-0.2.10.tgz#ea2784f842d9c47298e227230a06cfec59dbc47e"
+  integrity sha512-VBFvAye/pK/oWHDUCa2F8jyrtHhnHXR/zHxMz3REEgznfMCQyzy6yRU8hFNuMSO+AG3YN4fH71Suj6mvM3cG3w==
+
 graceful-fs@^4.1.2:
   version "4.2.8"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.8.tgz#e412b8d33f5e006593cbd3cee6df9f2cebbe802a"
@@ -1092,6 +1097,13 @@ vary@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   integrity sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=
+
+w1temp@^4.4.1:
+  version "4.4.1"
+  resolved "https://registry.yarnpkg.com/w1temp/-/w1temp-4.4.1.tgz#dbe9fc0a19ac753ca1e9e04cc4d6e536b71efc2f"
+  integrity sha512-PG/ekkMA5IdI5lLkax7s1/6pqM2QCWUtJihpB5EKQYZm7TpkBqXc2sYNHA9idPcfY/eKVNJw/GxMMrLD25MJ0Q==
+  dependencies:
+    gpio "^0.2.7"
 
 widest-line@^3.1.0:
   version "3.1.0"
