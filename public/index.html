@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature</title>
+  </head>
+  <body>
+    <div id="app">
+      <p id="tempLabel">0</p>
+    </div>
+    <script>
+      const pingMessageCreator = () => ({
+        type: "ping"
+      })
+
+      const tempLabel = document.getElementById('tempLabel')
+
+      const socket = new WebSocket(window.location.href.replace('http', 'ws'));
+      socket.onopen = () => {
+        socket.send(JSON.stringify(pingMessageCreator()));
+      }
+
+      socket.onmessage = (event) => {
+        console.log(event);
+        const action = JSON.parse(event.data)
+        switch (action.type) {
+          case 'temp': {
+            const { temp } = action.payload
+
+            tempLabel.textContent = temp;
+
+            break;
+          }
+        }
+      }
+
+      setInterval(() => {
+        socket.send(JSON.stringify(pingMessageCreator()))
+      }, 3000)
+    </script>
+  </body>
+</html>
