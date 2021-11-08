@@ -11,7 +11,7 @@ const wss = new WebSocketServer({server})
 const temperatureActionCreator = temp => ({
   type: 'temp',
   payload: {
-    temp
+    temp: temp
   }
 })
 
@@ -20,7 +20,9 @@ function getRandomArbitrary(min, max) {
 }
 
 function* tempGeneratorMaker() {
-  yield getRandomArbitrary(10, 30)
+  while(true) {
+    yield getRandomArbitrary(10, 30)
+  }
 }
 
 const tempGenerator = tempGeneratorMaker()
